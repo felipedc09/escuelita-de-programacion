@@ -65,24 +65,54 @@ function main() {
     for (let index = 0; index < necesidades.length; index++) {
       console.log("hacer lluvia de ideas "+ necesidades[index])
       console.log("identificar limitaciones " + necesidades[index])
-      soluciones[index] = necesidades[index] + "solucion"
+      soluciones[index] = necesidades[index] + " solucion"
     }
     return soluciones
   }
+
+  function DesarrollarSoluciones(soluciones, diasDeDesarrollo) {
+    const solucionesDesarrolladas = []
+    for (let i = 0; i < soluciones.length; i++) {
+      console.log("Se hace el desarrollo de la solución " + soluciones[i])
+      solucionesDesarrolladas[i] = soluciones[i] + " solución desarrollada correctamente en:" + diasDeDesarrollo + "Días"
+    }
+    return solucionesDesarrolladas
+  }
+
+  //respetooo por favooor
+
+  function ProbarSoluciones(solucionesDesarrolladas) {
+    let estadoPrograma = true;
+    for (let i = 0; i < solucionesDesarrolladas.length; i++) {
+      if (solucionesDesarrolladas[i].includes("solución desarrollada correctamente")) {
+        estadoPrograma = true;
+        console.log("EN FUNCIONAMIENTO:" + solucionesDesarrolladas[i])
+      } else {
+        estadoPrograma = false;
+        console.log("FALLIDO:" + solucionesDesarrolladas[i])
+      }
+    }
+    return estadoPrograma
+  }
+
+
+
+
+
 
   function createProgram() {
     const necesidades = identificarNecesidades(["Juan", "Maria"])
     conocerElProblema("ferreteria")
     const soluciones = plantearSoluciones(necesidades)
-    console.log("Desarrollar la solucion")
-    console.log("Programar")
-    console.log("Probar")
+    const solucionesPorProbar = DesarrollarSoluciones(soluciones, 6)
+    const estadoPrograma = ProbarSoluciones(solucionesPorProbar)
+    if (estadoPrograma == false) {
+      return
+    }
     console.log("Depurar")
-    console.log("Probar")
     console.log("Entregar")
   }
-
-  // proceso diferentes para crear un programa
+  //proceso diferentes para crear un programa
   createProgram()
 }
 
