@@ -42,7 +42,7 @@ function main() {
   // const retornoDeLAFuncion = ejecucionDeLaFunction(parametros)
   // console.log(retornoDeLAFuncion)
 
-  function identificarNecesidad(nombresClientes) {
+  function identificarNecesidades(nombresClientes) {
     const necesidades = []
     for (let i = 0; i < nombresClientes.length; i++) { //i = i + 1
       console.log("Identificar necesidad de cliente: " + nombresClientes[i]);
@@ -54,21 +54,26 @@ function main() {
   //verbo
   function conocerElProblema(negocio){
     console.log("estudair el negocio: " + negocio)
-    conocer.log("revisar estado actual")
-    conocer.log("definir como quiero que funcione")
-
+    console.log("revisar estado actual")
+    console.log("definir como quiero que funcione")
   }
+
   //Divide y venceras
 
-  function plantearSolucion(){
-// lluvia de ideas -- ideas
-// limitaciones
+  function plantearSoluciones(necesidades){
+    const soluciones = []
+    for (let index = 0; index < necesidades.length; index++) {
+      console.log("hacer lluvia de ideas "+ necesidades[index])
+      console.log("identificar limitaciones " + necesidades[index])
+      soluciones[index] = necesidades[index] + "solucion"
+    }
+    return soluciones
   }
 
   function createProgram() {
-    const necesidades = identificarNecesidad(["Juan", "Maria"])
+    const necesidades = identificarNecesidades(["Juan", "Maria"])
     conocerElProblema("ferreteria")
-    console.log("Plantear solucion")
+    const soluciones = plantearSoluciones(necesidades)
     console.log("Desarrollar la solucion")
     console.log("Programar")
     console.log("Probar")
