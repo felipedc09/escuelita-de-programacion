@@ -79,8 +79,6 @@ function main() {
     return solucionesDesarrolladas
   }
 
-  //respetooo por favooor
-
   function ProbarSoluciones(solucionesDesarrolladas) {
     let estadoPrograma = true;
     for (let i = 0; i < solucionesDesarrolladas.length; i++) {
@@ -94,11 +92,6 @@ function main() {
     }
     return estadoPrograma
   }
-
-
-
-
-
 
   function createProgram() {
     const necesidades = identificarNecesidades(["Juan", "Maria"])
