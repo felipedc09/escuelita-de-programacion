@@ -72,14 +72,14 @@ function main() {
 
   function createProgram() {
     const necesidades = identificarNecesidades(["Juan", "Maria"])
-    conocerElProblema("ferreteria")
-    const soluciones = plantearSoluciones(necesidades)
-    console.log("Desarrollar la solucion")
-    console.log("Programar")
-    console.log("Probar")
-    console.log("Depurar")
-    console.log("Probar")
-    console.log("Entregar")
+      conocerElProblema("ferreteria")
+      const soluciones = plantearSoluciones(necesidades)
+      console.log("Desarrollar la solucion")
+      console.log("Programar")
+      console.log("Probar")
+      console.log("Depurar")
+      console.log("Probar")
+      console.log("Entregar")
   }
 
   // proceso diferentes para crear un programa
