@@ -70,6 +70,9 @@ function main() {
     return soluciones
   }
 
+function (soluciones){
+  if(
+  
   function createProgram() {
     const necesidades = identificarNecesidades(["Juan", "Maria"])
       conocerElProblema("ferreteria")
