@@ -27,9 +27,13 @@ class Humano {
   cocinarDeLili(receta, ingredientes) {
     for (let i = 0; i < receta.length; i++) {
       for (let j = 0; j < ingredientes.length; j++) {
-        if (!ingredientes[j].includes(receta[i])) {
-          console.log(`No se puede cocinar ${receta[i]} porque no hay ${ingredientes[j]}.`);
-          return
+        if (ingredientes[j] === receta[i]) {
+          break
+        } else {
+          const esElFinalDeLosIngredientes = j === ingredientes.length - 1;
+          if (esElFinalDeLosIngredientes) {
+            console.log(`No se puede cocinar receta porque no hay ${receta[i]}.`);
+          }
         }
       }
     }
@@ -77,7 +81,7 @@ const cocinaDeMateo = new Cocina();
 
 console.log("Utensilios en la cocina de Lili:", cocinaDeLili.utensilios);
 console.log("Viveres en la cocina de Lili:", cocinaDeLili.viveres);
-cocinaDeLili.perderViveres(["huevos", "fruta"]);
+cocinaDeLili.perderViveres(["fruta"]);
 console.log("Viveres en la cocina de Lili después de perder algunos:", cocinaDeLili.viveres);
 
 cocinaDeMateo.perderViveres(["huevos"]);
@@ -88,4 +92,5 @@ const desayunoDeMateo = mateo.cocinarDeMateo("huevos", "estufa");
 console.log(desayunoDeMateo);
 
 const recetaHuevosTocino = ["huevos", "sal", "tocino"];
+console.log('cocinaDeLili.viveres', cocinaDeLili.viveres)
 const desayunoLili = lili.cocinarDeLili(recetaHuevosTocino, cocinaDeLili.viveres);
