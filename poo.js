@@ -1,23 +1,43 @@
 // hacer el desuyuno
 
-// serHumano
-// cocina
-// huevos
-// pan
+// serHumano *
+// cocina *
+// utencilios de cocina *
 // estufa
 // sartén
-// utencilios de cocina
 // losa
+// viveres *
+// huevos
+// pan
 // juguito
 // fruta
 // aceite
 
 class Humano {
-
-  this.nombre
-
   constructor(nombre) {
     this.nombre = nombre;
+  }
+
+  cocinarDeMateo(ingredientes, utensilios) {
+    console.log('cocinando con los siguientes ingredientes:', ingredientes);
+    console.log('usando los siguientes utensilios:', utensilios);
+    return 'desayuno listo';
+  }
+
+  cocinarDeLili(receta, ingredientes) {
+    for (let i = 0; i < receta.length; i++) {
+      for (let j = 0; j < ingredientes.length; j++) {
+        if (ingredientes[j] === receta[i]) {
+          break
+        } else {
+          const esElFinalDeLosIngredientes = j === ingredientes.length - 1;
+          if (esElFinalDeLosIngredientes) {
+            console.log(`No se puede cocinar receta porque no hay ${receta[i]}.`);
+          }
+        }
+      }
+    }
+    return `Receta ${receta} cocinada con los ingredientes ${ingredientes}.`;
   }
 
   comer(comida) {
@@ -33,7 +53,44 @@ class Humano {
   }
 }
 
+
+class Cocina {
+  constructor() {
+    this.utensilios = ["estufa", "sartén", "losa"];
+    this.viveres = ["huevos", "pan", "juguito", "fruta", "aceite", "sal"];
+  }
+
+  perderViveres(viveres) {
+    for (let i = 0; i < viveres.length; i++) {
+      for (let j = 0; j < this.viveres.length; j++) {
+        if (viveres[i] === this.viveres[j]) {
+          this.viveres.splice(j, 1);
+        }
+      }
+    }
+  }
+}
+
 const mateo = new Humano("Mateo");
 mateo.comer("huevos");
 const lili = new Humano("Lili");
 lili.dormir(8);
+
+const cocinaDeLili = new Cocina();
+const cocinaDeMateo = new Cocina();
+
+console.log("Utensilios en la cocina de Lili:", cocinaDeLili.utensilios);
+console.log("Viveres en la cocina de Lili:", cocinaDeLili.viveres);
+cocinaDeLili.perderViveres(["fruta"]);
+console.log("Viveres en la cocina de Lili después de perder algunos:", cocinaDeLili.viveres);
+
+cocinaDeMateo.perderViveres(["huevos"]);
+console.log("Viveres en la cocina de Mateo después de perder algunos:", cocinaDeMateo.viveres);
+
+
+const desayunoDeMateo = mateo.cocinarDeMateo("huevos", "estufa");
+console.log(desayunoDeMateo);
+
+const recetaHuevosTocino = ["huevos", "sal", "tocino"];
+console.log('cocinaDeLili.viveres', cocinaDeLili.viveres)
+const desayunoLili = lili.cocinarDeLili(recetaHuevosTocino, cocinaDeLili.viveres);
