@@ -26,8 +26,8 @@ if (esFeliz) {
 // boolean esVerdadero = true; // Boolean
 // char caracter = 'A'; // Character
 // String textoLargo = "Este es un texto largo que puede contener múltiples líneas y caracteres especiales como ñ, á, é, í, ó, ú.";
-// Array < string > lista =["1", "2", "3", "4", "5"]; // Array
-
+// Array <string> lista =["1", "2", "3", "4", "5"]; // Array
+// Tupla <string, int> variable = ["Hola", 42]; // Tuple
 
 
 // Definir una función
@@ -70,7 +70,6 @@ function main() {
     return soluciones
   }
 
-<<<<<<< HEAD
   function DesarrollarSoluciones(soluciones, diasDeDesarrollo) {
     const solucionesDesarrolladas = []
     for (let i = 0; i < soluciones.length; i++) {
@@ -105,21 +104,6 @@ function main() {
     }
     console.log("Depurar")
     console.log("Entregar")
-=======
-function (soluciones){
-  if(
-  
-  function createProgram() {
-    const necesidades = identificarNecesidades(["Juan", "Maria"])
-      conocerElProblema("ferreteria")
-      const soluciones = plantearSoluciones(necesidades)
-      console.log("Desarrollar la solucion")
-      console.log("Programar")
-      console.log("Probar")
-      console.log("Depurar")
-      console.log("Probar")
-      console.log("Entregar")
->>>>>>> bd92aee666cdf4a0917484c1d2f0bdbac9a5c639
   }
   //proceso diferentes para crear un programa
   createProgram()
