@@ -18,46 +18,36 @@ class Humano {
     this.nombre = nombre;
   }
 
-  cocinarDeMateo(ingredientes, utensilios) {
-    console.log('cocinando con los siguientes ingredientes:', ingredientes);
-    console.log('usando los siguientes utensilios:', utensilios);
-    return 'desayuno listo';
-  }
-
-  cocinarDeLili(receta, ingredientes) {
-    for (let i = 0; i < receta.length; i++) {
+  cocinar(receta, cocina) {
+    const ingredientes = cocina.viveres
+    const utensilios = cocina.utensilios
+    for (let i = 0; i < receta.ingredientes.length; i++) {
       for (let j = 0; j < ingredientes.length; j++) {
-        if (ingredientes[j] === receta[i]) {
+        if (ingredientes[j] === receta.ingredientes[i]) {
           break
         } else {
           const esElFinalDeLosIngredientes = j === ingredientes.length - 1;
           if (esElFinalDeLosIngredientes) {
-            console.log(`No se puede cocinar receta porque no hay ${receta[i]}.`);
+            return `No se puede cocinar ${receta.nombre} porque no hay ${receta.ingredientes[i]}.`;
           }
         }
       }
     }
-    return `Receta ${receta} cocinada con los ingredientes ${ingredientes}.`;
-  }
-
-  comer(comida) {
-    console.log(`${this.nombre} está comiendo ${comida}.`);
-  }
-
-  dormir(horas) {
-    console.log(`${this.nombre} está durmiendo por ${horas} horas.`);
-  }
-
-  hablar(mensaje) {
-    console.log(`${this.nombre} dice: "${mensaje}"`);
+    return `Receta ${receta.nombre} cocinada con los ingredientes ${receta.ingredientes}, con utensilios ${utensilios} y quedan los siguientes viveres ${cocina.perderViveres(receta.ingredientes)}.`;
   }
 }
 
+class Receta {
+  constructor(nombre, ingredientes) {
+    this.nombre = nombre;
+    this.ingredientes = ingredientes
+  }
+}
 
 class Cocina {
-  constructor() {
-    this.utensilios = ["estufa", "sartén", "losa"];
-    this.viveres = ["huevos", "pan", "juguito", "fruta", "aceite", "sal"];
+  constructor(utensilios, viveres) {
+    this.utensilios = utensilios;
+    this.viveres = viveres;
   }
 
   perderViveres(viveres) {
@@ -68,29 +58,24 @@ class Cocina {
         }
       }
     }
+    return this.viveres
   }
 }
 
 const mateo = new Humano("Mateo");
-mateo.comer("huevos");
 const lili = new Humano("Lili");
-lili.dormir(8);
 
-const cocinaDeLili = new Cocina();
-const cocinaDeMateo = new Cocina();
+const cocinaDeLili = new Cocina(["estufa", "sartén", "losa"], ["huevos", "pan", "juguito", "fruta", "aceite", "sal"]);
+const cocinaDeMateo = new Cocina(["estufa", "sartén", "losa"], ["francesas", "tostadas", "sal"]);
 
-console.log("Utensilios en la cocina de Lili:", cocinaDeLili.utensilios);
-console.log("Viveres en la cocina de Lili:", cocinaDeLili.viveres);
-cocinaDeLili.perderViveres(["fruta"]);
-console.log("Viveres en la cocina de Lili después de perder algunos:", cocinaDeLili.viveres);
+const recetaHuevosTocino = new Receta("Huevos con Tocino", ["huevos", "tocino", "sal"]);
+const recetaHuevoPan = new Receta("Huevos con pan", ["huevos", "pan",
+  "sal"
+])
+const recetaTostadasFrancesas = new Receta("Tostadas Francesas", ["tostadas", "francesas", "sal"
+])
 
-cocinaDeMateo.perderViveres(["huevos"]);
-console.log("Viveres en la cocina de Mateo después de perder algunos:", cocinaDeMateo.viveres);
-
-
-const desayunoDeMateo = mateo.cocinarDeMateo("huevos", "estufa");
-console.log(desayunoDeMateo);
-
-const recetaHuevosTocino = ["huevos", "sal", "tocino"];
-console.log('cocinaDeLili.viveres', cocinaDeLili.viveres)
-const desayunoLili = lili.cocinarDeLili(recetaHuevosTocino, cocinaDeLili.viveres);
+const desayunoMateo = mateo.cocinar(recetaTostadasFrancesas, cocinaDeMateo)
+console.log(desayunoMateo)
+const desayunoLili = lili.cocinar(recetaHuevoPan, cocinaDeLili);
+console.log(desayunoLili)
