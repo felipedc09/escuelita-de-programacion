@@ -1,3 +1,8 @@
+class Generador {
+  constructor() {
+    this.estado = 01;
+  }
+}
 class Personaje {
   constructor(nombre, accesorios, ofrenda, habilidades) {
     nombre = this.nombre;
@@ -9,58 +14,49 @@ class Personaje {
 
 class Sobreviviente extends Personaje {
   constructor(objeto) {
-    super(nombre, accesorios, ofrenda, habilidades)
-    objeto= this.objeto
+    super(nombre, accesorios, ofrenda, habilidades);
+    objeto = this.objeto;
     this.barraDeVida = 100;
   }
 
-  reparar(){
+  reparar(
 
+
+
+    generador) {
+    for (let i = 0; i < 100; i++) {
+      generador.estado = generador.estado + 1;
+    }
+    if (generador.estado === 100) {
+      consonselect.log("Generador Reparado" + generador.estado);
+    }
   }
 
   descolgarDelGancho(){
 
   }
 
-  curarSobreviviente(){
+  curarSobreviviente() {}
 
-  }
+  usarObjeto() {}
 
-  usarObjeto(){
-
-  }
-
-  abrirPuertaDeSalida(){
-
-  }
-
+  abrirPuertaDeSalida() {}
 }
 
 class Asesino extends personaje {
-    constructor(poder){
-        super(nombre, accesorios, ofrenda, habilidades)
-        this.cooldown = 30
-        porder = this.poder
-    }
+  constructor(poder, arma) {
+    super(nombre, accesorios, ofrenda, habilidades);
+    arma = this.arma;
+    this.cooldown = 30;
+    porder = this.poder;
+  }
 
-    golpear(){
+  golpear() {}
+  usarHabilidad() {}
 
-    }
-    usarHabilidad(){
+  sabotear() {}
 
-    }
+  agarrarSobreviviente() {}
 
-    sabotear(){
-
-    }
-
-    agarrarSobreviviente(){
-
-    }
-
-    colgarSobreviviente(){
-
-    }
-
-
+  colgarSobreviviente() {}
 }

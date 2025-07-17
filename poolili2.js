@@ -1,6 +1,6 @@
 class partida{
     constructor(){}
-    iniciar()
+   g
     enCurso()
     finalizar()
 }
@@ -10,40 +10,54 @@ class Personaje {
   constructor(nombre, habilidades, ofrenda) {
     this.nombre = nombre;
     this.habilidades = habilidades;
-    this.ofrenda;
+    this.ofrenda=
   }
 }
 
 class habilidades{
-    constructor(){
+    constructor(nombre,tiempoRecarga,condicion){
         this.nombre
         this.tiempoRecarga
-        this.condicionRecarga
+        this.condicion
     }
-    activacion()
+    activacion(){
 
-}
+    }
 
 class Asesino extends Personaje {
   constructor(accesorios) {
     super(nombre, habilidades, accesorios, ofrenda)
     this.accesorios=Poder
   }
+  atacar(Superviviente){
 
-  usarPoder(){}
-  atacar(){}
-  recogerSupreviviente(){}
+    Superviviente.estadoSalud = Superviviente.estadoSalud-1
+    console.log (this.nombre " ataca a " Superviviente.nombre)
+  }
+
+  recogerSupreviviente(viviente){
+    if
+  }
+
   buscarArmario(){}
   matar()[]
 }
 
 class Superviviente extends Personaje {
-    constructor(objeto){
+    constructor(objeto,estadoSalud){
     this.accesorio=objeto
+    this.estadoSalud=3
     }
-    reparar(){}
+    reparar(){
+
+    }
     curar(){}
+    if (estadoSalud!==3){
+      estadoSalud++
+    }
+
     descolgarCompañero(){}
+
     usarObjeto(){}
     esconderseArmario(){}
     abrirPuertas(){}
