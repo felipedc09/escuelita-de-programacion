@@ -3,6 +3,7 @@ class Generador {
     this.estado = 01;
   }
 }
+
 class Personaje {
   constructor(nombre, accesorios, ofrenda, habilidades) {
     nombre = this.nombre;
@@ -12,18 +13,20 @@ class Personaje {
   }
 }
 
+class Gancho {
+  constructor() {}
+}
+
 class Sobreviviente extends Personaje {
   constructor(objeto) {
     super(nombre, accesorios, ofrenda, habilidades);
     objeto = this.objeto;
-    this.barraDeVida = 100;
+    this.golpesRecibidos = 0;
+    this.colgadoEnElGancho = 0;
+    this.enElSuelo = false;
   }
 
-  reparar(
-
-
-
-    generador) {
+  reparar(generador) {
     for (let i = 0; i < 100; i++) {
       generador.estado = generador.estado + 1;
     }
@@ -32,9 +35,13 @@ class Sobreviviente extends Personaje {
     }
   }
 
-  descolgarDelGancho(){
-
+  caerAlSuelo() {
+    if (this. === 2) {
+      this.enElSuelo = true;
+    }
   }
+
+  descolgarDelGancho() {}
 
   curarSobreviviente() {}
 
@@ -46,17 +53,26 @@ class Sobreviviente extends Personaje {
 class Asesino extends personaje {
   constructor(poder, arma) {
     super(nombre, accesorios, ofrenda, habilidades);
-    arma = this.arma;
+    this.arma = arma;
     this.cooldown = 30;
-    porder = this.poder;
+    this.poder = porder ;
+    this.sobreviviente = null
+
   }
 
-  golpear() {}
+  golpear(arma, sobreviviente, poder) {
+    sobreviviente.golpesRecibidos = sobreviviente.golpesRecibidos + 1;
+  }
+
   usarHabilidad() {}
 
   sabotear() {}
 
-  agarrarSobreviviente() {}
+  agarrarSobreviviente(sobreviviente) {
+if(sobreviviente.enElSuelo = true){
+this.sobreviviente = sobreviviente
+}
+  }
 
   colgarSobreviviente() {}
 }
