@@ -43,7 +43,7 @@ class Asesino extends Equipacion {
   recogerSupreviviente(Superviviente){
     if(Superviviente.golpes===2){
       Superviviente.estado='atrapado'
-      console.log ('cargando a ' Superviviente.nombre)
+      console.log ('cargando a '+ Superviviente.nombre)
     }
   }
 
@@ -51,12 +51,12 @@ class Asesino extends Equipacion {
     if(Superviviente.estado==='atrapado'){
       Superviviente.estado='colgado'
       Superviviente.cuelgue++
-      console.log ('colgando a ' Superviviente.nombre)
+      console.log (this.nombre +' ha colgando a '+ Superviviente.nombre)
     }
   }
 
   buscarEnArmario(Superviviente){
-    if(Superviviente.estado==='escondido'){
+    if(Superviviente.estado==='escondido' ||){
       Supereviviente.estado='atrapado'
     }
   }
@@ -70,9 +70,9 @@ class Asesino extends Equipacion {
     }
 }
 
+// estados del Superviviente:activo,herido,agonizante,atrapado,colgado.escondido
 class Superviviente extends Equipacion {
 
-// estados del Superviviente:activo,herido,agonizante,atrapado,colgado.escondido
 
     constructor(objeto,golpes){
     this.accesorio=objeto
@@ -82,25 +82,42 @@ class Superviviente extends Equipacion {
     }
 
     reparar(){
+      if(this.golpes!===2 && this.estado==='activo'){
+      console.log(this.nombre + ' esta reparando')
+      this.estado='reparando'
+    }
+    }
+
+    curar(superviviente){
+      if(this.golpes!===2  && this.estado==='activo' && superviviente.golpes!==0){
+      console.log(this.nombre + ' esta curando a ' + superviviente.nombre)
+      superviviente.golpes=superviviente.golpes-1
 
     }
-    curar(){}
-    if (golpes!==3, estado='activo'){
-      golpes++
+  }
+
+    descolgarCompañero(superviviente){
+      if(this.golpes!===2 && this.estado==='activo' && superviviente.estado==='colgado'){
+      console.log(this.nombre + ' descuelga a ' + superviviente.nombre)
+      superviviente.golpes=superviviente.golpes-1
     }
 
-    descolgarCompañero(){}
 
-    usarObjeto(){}
-    esconderseArmario(){}
+    esconderseArmario(){
+      if(Superviviente.golpes!===2 && Superviviente.estado===activo && ){
+      console.log(this.nombre + ' se esconde en armario ')
+      Superviviente.estado='escondido'
+
+    }
+    }
+
     abrirPuertas(){}
 
     morir(){
-
-
-      if(this.cuelgue=3){
-        console.log(this.nombre + 'esta muerto')
-      }
+      if(this.estado==='colgado' && cuelgues===3){
+      console.log(this.nombre + ' ha muerto en el gancho')
+      this.estado='muerto'
+    }
     }
 }
 

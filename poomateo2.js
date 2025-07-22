@@ -13,16 +13,12 @@ class Personaje {
   }
 }
 
-class Gancho {
-  constructor() {}
-}
-
 class Sobreviviente extends Personaje {
   constructor(objeto) {
     super(nombre, accesorios, ofrenda, habilidades);
     objeto = this.objeto;
     this.golpesRecibidos = 0;
-    this.colgadoEnElGancho = 0;
+    this.colgadoEnElGancho = false;
     this.enElSuelo = false;
   }
 
@@ -36,18 +32,33 @@ class Sobreviviente extends Personaje {
   }
 
   caerAlSuelo() {
-    if (this. === 2) {
+    if (this.golpesRecibidos === 2) {
       this.enElSuelo = true;
     }
   }
 
-  descolgarDelGancho() {}
+  descolgarDelGancho(sobreviviente) {
+    if (sobreviviente.colgadoEnElGancho === true) {
+      sobreviviente.colgadoEnElGancho = false;
+    }
+  }
 
-  curarSobreviviente() {}
+  curarSobreviviente(sobreviviente) {
+    if (
+      sobreviviente.golpesRecibidos === 1 ||
+      sobreviviente.golpesRecibidos === 2
+    ) {
+      sobreviviente.golpesRecibidos = sobreviviente.golpesRecibidos - 1;
+    }
+  }
 
   usarObjeto() {}
 
-  abrirPuertaDeSalida() {}
+  abrirPuertaDeSalida(interruptor) {
+    if (interruptor) {
+      puertaDeSalida = true;
+    }
+  }
 }
 
 class Asesino extends personaje {
@@ -55,9 +66,8 @@ class Asesino extends personaje {
     super(nombre, accesorios, ofrenda, habilidades);
     this.arma = arma;
     this.cooldown = 30;
-    this.poder = porder ;
-    this.sobreviviente = null
-
+    this.poder = porder;
+    this.sobreviviente = null;
   }
 
   golpear(arma, sobreviviente, poder) {
@@ -66,13 +76,24 @@ class Asesino extends personaje {
 
   usarHabilidad() {}
 
-  sabotear() {}
+  sabotearGenerador(generador){
+    if(generador.estado>1){
+for(let i = generador.estado; generador.estado===0){
 
-  agarrarSobreviviente(sobreviviente) {
-if(sobreviviente.enElSuelo = true){
-this.sobreviviente = sobreviviente
 }
+    }
   }
 
-  colgarSobreviviente() {}
+  agarrarSobreviviente(sobreviviente) {
+    if ((sobreviviente.enElSuelo = true)) {
+      this.sobreviviente = sobreviviente;
+    }
+  }
+
+  colgarSobreviviente() {
+    if (this.sobreviviente) {
+      this.sobreviviente.colgadoEnElGancho = true;
+      this.sobreviviente = null;
+    }
+  }
 }
